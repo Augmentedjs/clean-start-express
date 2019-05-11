@@ -1,4 +1,4 @@
-# clean-start
+# clean-start-express
 A simple clean webpack 4, babel 7, express.js, sass, css, and externalized stylesheet project setup for use.
 
 `npx clean-start-express app-name` to create a base webpack/babel/sass setup into `app-name` folder.
@@ -28,3 +28,5 @@ The supported npm commands with this build are the following:
   - completely clears node_modules and installs
 * npm test
   - runs babel and executes mocha against the test folder
+* npm start
+  - runs Express.js service
