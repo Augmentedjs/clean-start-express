@@ -9,7 +9,8 @@
     "clean": "rm -rf node_modules",
     "test": "mocha --require @babel/register --require test/helper.js -c test/*Spec.js",
     "reinstall": "npm run clean && npm install",
-    "rebuild": "npm run clean && npm install && npm run build"
+    "rebuild": "npm run clean && npm install && npm run build",
+    "start": "node ./service/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,10 @@
     "sass",
     "css"
   ],
-  "authors": ["Bob Warren <jedi.master@augmentedjs.com> (http://www.augmentedjs.com)", "Karen Calpo <kc@augmentedjs.com> (http://www.augmentedjs.com)"],
+  "authors": [
+    "Bob Warren <jedi.master@augmentedjs.com> (http://www.augmentedjs.com)",
+    "Karen Calpo <kc@augmentedjs.com> (http://www.augmentedjs.com)"
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/Augmentedjs/clean-start-express/issues"
@@ -54,7 +58,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "compression": "^1.7.4"
   },
   "dependencies": {
     "fs-extra": "^7.0.1"
