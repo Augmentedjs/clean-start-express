@@ -1,6 +1,6 @@
 {
   "name": "clean-start-express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple clean webpack 4, babel 7, sass, css, and externalized stylesheet project setup for use",
   "main": "src/index.js",
   "scripts": {
@@ -47,6 +47,8 @@
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
+    "eslint": "^5.12.1",
+    "eslint-plugin-import": "^2.15.0",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "jsdom": "^14.0.0",
