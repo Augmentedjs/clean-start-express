@@ -1,6 +1,6 @@
 {
   "name": "clean-start-express",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple clean webpack 4, babel 7, sass, css, and externalized stylesheet project setup for use",
   "main": "src/index.js",
   "scripts": {
