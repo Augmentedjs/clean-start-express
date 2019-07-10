@@ -1,22 +1,32 @@
 #!/usr/bin/env node
 
-const fs = require("fs-extra");
+const fs = require("fs");
 const path = require("path");
 const https = require("https");
 const { exec } = require("child_process");
 
 const packageJson = require("../package.json");
 
-const scripts = `
+const scripts = `"start": "node ./service/index.js",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "test": "mocha --require @babel/register --require test/helper.js -c test/*Spec.js",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
-    "rebuild": "npm run clean && npm install && npm run build",
-    "start": "node ./service/index.js"`;
+    "rebuild": "npm run clean && npm install && npm run build"`;
 
 const license = `"license": "Apache-2.0"`;
+
+const copyFolderSync = (from, to) => {
+  fs.mkdirSync(to);
+  fs.readdirSync(from).forEach(element => {
+    if (fs.lstatSync(path.join(from, element)).isFile()) {
+      fs.copyFileSync(path.join(from, element), path.join(to, element));
+    } else {
+      copyFolderSync(path.join(from, element), path.join(to, element));
+    }
+  });
+};
 
 /**
  * we pass the object key dependency || devdependency to this function
@@ -96,22 +106,22 @@ exec(
         console.info(npmStdout);
         console.info("Dependencies installed");
 
-        console.info("Copying additional files..");
-        // copy additional source files
-        fs.copy(path.join(__dirname, "../src"), `${process.argv[2]}/src`)
-          .then(() =>
-            console.info(`copying source`))
-          .catch(err => console.error(err));
+        try {
+          console.info("Copying additional files..");
+          // copy additional source files
+          console.info(`copying source`);
+          copyFolderSync(path.join(__dirname, "../src"), `${process.argv[2]}/src`);
 
-        fs.copy(path.join(__dirname, "../test"), `${process.argv[2]}/test`)
-          .then(() =>
-            console.info(`copying tests`))
-          .catch(err => console.error(err));
+          console.info(`copying tests`);
+          copyFolderSync(path.join(__dirname, "../test"), `${process.argv[2]}/test`);
 
-          fs.copy(path.join(__dirname, "../service"), `${process.argv[2]}/service`)
-            .then(() =>
-              console.info(`copying express.js service files`))
-            .catch(err => console.error(err));
+          console.info(`copying service`);
+          copyFolderSync(path.join(__dirname, "../service"), `${process.argv[2]}/service`);
+          console.info(`All done!\nYour project is now started into ${process.argv[2]} folder,
+            refer to the README for the project structure.`);
+        } catch(e) {
+          console.error("Error", e);
+        }
       }
     );
   }
