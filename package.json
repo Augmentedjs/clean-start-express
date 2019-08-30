@@ -1,6 +1,6 @@
 {
   "name": "clean-start-express",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A simple clean webpack 4, babel 7, sass, css, and externalized stylesheet project setup for use",
   "main": "src/index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "test": "mocha --require @babel/register --require test/helper.js -c test/*Spec.js",
     "reinstall": "npm run clean && npm install",
     "rebuild": "npm run clean && npm install && npm run build",
-    "start": "node ./service/index.js"
+    "start": "node ./service/index.js",
+    "start:dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -58,7 +59,8 @@
     "sass-loader": "^7.3.1",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "compression": "^1.7.4",

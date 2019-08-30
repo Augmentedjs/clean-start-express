@@ -13,7 +13,8 @@ const scripts = `"start": "node ./service/index.js",
     "test": "mocha --require @babel/register --require test/helper.js -c test/*Spec.js",
     "clean": "rm -rf node_modules",
     "reinstall": "npm run clean && npm install",
-    "rebuild": "npm run clean && npm install && npm run build"`;
+    "rebuild": "npm run clean && npm install && npm run build",
+    "start:dev": "webpack-dev-server"`;
 
 const license = `"license": "Apache-2.0"`;
 
